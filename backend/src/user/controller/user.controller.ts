@@ -1,8 +1,7 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto, LoginUserDto } from '../dto/user.dto';
-import { UserService } from '../user-service/user.service';
-import { AuthGuard } from '../strategy/jwt-auth.guard';
+import { UserService } from '../service/user.service';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -21,13 +20,5 @@ export class UserController {
   @ApiBody({ type: CreateUserDto })
   register(@Body() dto: CreateUserDto) {
     return this.userService.register(dto);
-  }
-
-  @UseGuards(AuthGuard)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Lister tous les utilisateurs (protégé)' })
-  @Get()
-  findAll() {
-    return this.userService.findAll();
   }
 }

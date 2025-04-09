@@ -29,7 +29,7 @@ export class UserService {
       throw new UnauthorizedException('Mot de passe incorrect');
     }
 
-    return { userId: user.id, email: user.email };
+    return { userId: user.id, email: user.email, username: user.username };
   }
 
   async login(dto: LoginUserDto) {
@@ -37,6 +37,10 @@ export class UserService {
     const payload = { sub: user.userId, email: user.email };
     return {
       message: 'Connexion réussie',
+      user: {
+        email: user.email,
+        username: user.username,
+      },
       access_token: this.jwtService.sign(payload),
     };
   }
@@ -60,15 +64,11 @@ export class UserService {
     const payload = { sub: user.id, email: user.email };
     return {
       message: 'Inscription réussie',
+      user: {
+        email: user.email,
+        username: user.username,
+      },
       access_token: this.jwtService.sign(payload),
     };
-  }
-
-  async findAll() {
-    const users = await this.usersRepository.find();
-    return users.map((user) => ({
-      email: user.email,
-      username: user.username,
-    }));
   }
 }
