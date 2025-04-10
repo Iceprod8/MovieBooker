@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// eslint-disable-next-line no-undef
-const domain = process.env.BACKEND || "http://localhost:3000";
+const domain = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 export async function backend(endpoint, config = {}) {
   try {
