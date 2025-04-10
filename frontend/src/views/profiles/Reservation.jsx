@@ -21,20 +21,17 @@ export default function Reservation() {
   async function fetchReservations() {
     try {
       setLoading(true);
-      const data = await backend("http://localhost:3000/reservation", {
+      const data = await backend("reservation", {
         method: "GET",
         access_token: user.access_token,
       });
       const enriched = await Promise.all(
         data.map(async (res) => {
           try {
-            const movieDetails = await backend(
-              `http://localhost:3000/movies/${res.movieId}`,
-              {
-                method: "GET",
-                access_token: user.access_token,
-              }
-            );
+            const movieDetails = await backend(`movies/${res.movieId}`, {
+              method: "GET",
+              access_token: user.access_token,
+            });
             return { ...res, movieDetails };
           } catch {
             return res;
@@ -53,7 +50,7 @@ export default function Reservation() {
     const confirm = window.confirm("Voulez-vous vraiment supprimer ?");
     if (!confirm) return;
     try {
-      await backend(`http://localhost:3000/reservation/${id}`, {
+      await backend(`reservation/${id}`, {
         method: "DELETE",
         access_token: user.access_token,
       });

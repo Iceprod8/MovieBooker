@@ -28,7 +28,7 @@ export default function MoviesDetails() {
   async function fetchMovie() {
     try {
       setLoading(true);
-      const data = await backend(`http://localhost:3000/movies/${id}`, {
+      const data = await backend(`movies/${id}`, {
         access_token: user.access_token,
       });
       setMovie(data);
@@ -56,7 +56,7 @@ export default function MoviesDetails() {
       const now = new Date();
       const [hours, mins] = timeslot.split(":");
       now.setHours(parseInt(hours, 10), parseInt(mins, 10), 0);
-      const result = await backend("http://localhost:3000/reservation", {
+      const result = await backend("reservation", {
         method: "POST",
         access_token: user.access_token,
         data: { movieId: parseInt(id, 10), date: now.getTime() },

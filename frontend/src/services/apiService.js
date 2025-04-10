@@ -1,11 +1,14 @@
 import axios from "axios";
 
-export async function backend(url, config = {}) {
+// eslint-disable-next-line no-undef
+const domain = process.env.BACKEND || "http://localhost:3000";
+
+export async function backend(endpoint, config = {}) {
   try {
     const { method = "GET", data, access_token, ...rest } = config;
 
     const finalConfig = {
-      url,
+      url: `${domain}${endpoint}`,
       method,
       data,
       ...rest,

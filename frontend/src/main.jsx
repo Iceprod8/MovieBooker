@@ -4,6 +4,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import App from "./App";
 import theme from "./theme";
 import "./index.css";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
