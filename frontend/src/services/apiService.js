@@ -1,4 +1,5 @@
 import axios from "axios";
+console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
 
 const domain = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 

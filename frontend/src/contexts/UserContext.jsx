@@ -15,7 +15,9 @@ export function UserProvider({ children }) {
 
   async function register({ username, email, password }) {
     try {
-      const res = await axios.post("auth/register", {
+      const domain =
+        import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+      const res = await axios.post(`${domain}auth/register`, {
         username,
         email,
         password,
@@ -38,7 +40,9 @@ export function UserProvider({ children }) {
 
   async function login({ email, password }) {
     try {
-      const res = await axios.post("auth/login", {
+      const domain =
+        import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+      const res = await axios.post(`${domain}auth/login`, {
         email,
         password,
       });
