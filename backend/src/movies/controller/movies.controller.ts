@@ -50,12 +50,19 @@ export class MoviesController {
     type: String,
     description: 'Critère de tri',
   })
+  @ApiQuery({
+    name: 'limit',
+    required: false,
+    type: Number,
+    description: 'Nombre de sorties par page (par défaut 25)',
+  })
   async findAll(
     @Query('page') page?: number,
     @Query('search') search?: string,
     @Query('sort') sort?: string,
+    @Query('limit') limit?: number,
   ): Promise<TmdbMoviesResponseDto> {
-    return this.moviesService.findAll(page, search, sort);
+    return this.moviesService.findAll(page, search, sort, limit);
   }
 
   @Get(':id')

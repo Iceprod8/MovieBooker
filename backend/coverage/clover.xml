@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744288608627" clover="3.2.0">
-  <project timestamp="1744288608628" name="All files">
-    <metrics statements="248" coveredstatements="138" conditionals="18" coveredconditionals="2" methods="39" coveredmethods="17" elements="305" coveredelements="157" complexity="0" loc="248" ncloc="248" packages="16" files="20" classes="20"/>
+<coverage generated="1744299732320" clover="3.2.0">
+  <project timestamp="1744299732320" name="All files">
+    <metrics statements="248" coveredstatements="138" conditionals="19" coveredconditionals="2" methods="39" coveredmethods="17" elements="306" coveredelements="157" complexity="0" loc="248" ncloc="248" packages="16" files="20" classes="20"/>
     <package name="src">
       <metrics statements="31" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
       <file name="app.controller.ts" path="C:\Users\NathanSamochval\Documents\GitHub\MovieBooker\backend\src\app.controller.ts">
@@ -40,12 +40,12 @@
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.movies">
@@ -70,10 +70,10 @@
         <line num="19" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="3" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.movies.dto">
@@ -104,9 +104,9 @@
       </file>
     </package>
     <package name="src.movies.service">
-      <metrics statements="22" coveredstatements="5" conditionals="5" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <metrics statements="22" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
       <file name="movies.service.ts" path="C:\Users\NathanSamochval\Documents\GitHub\MovieBooker\backend\src\movies\service\movies.service.ts">
-        <metrics statements="22" coveredstatements="5" conditionals="5" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="22" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
@@ -115,20 +115,20 @@
         <line num="10" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.reservation">

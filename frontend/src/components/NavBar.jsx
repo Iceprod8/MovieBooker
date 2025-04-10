@@ -6,32 +6,51 @@ export default function NavBar() {
   const { user, logout } = useUser();
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "#000",
+        boxShadow: "0 2px 8px rgba(255, 215, 0, 0.2)",
+        mb: 2,
+      }}
+    >
       <Toolbar>
         <Typography
           variant="h6"
-          sx={{ flexGrow: 1, fontWeight: "bold", letterSpacing: "1px" }}
+          sx={{
+            flexGrow: 1,
+            fontWeight: "bold",
+            letterSpacing: "1px",
+            color: "#FFD700",
+          }}
         >
           <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-            My Movie App
+            MovieBooker
           </Link>
         </Typography>
 
         {user.isLoggedIn ? (
           <>
-            <Typography variant="body1" sx={{ marginRight: 2 }}>
+            <Typography variant="body1" sx={{ marginRight: 2, color: "#fff" }}>
               Bonjour, {user.username} !
             </Typography>
-            <Button component={Link} to="/reservations" color="inherit">
+            <Button
+              component={Link}
+              to="/reservations"
+              sx={{ color: "#FFD700" }}
+            >
               Mes réservations
             </Button>
-            <Button color="inherit" onClick={logout}>
+            <Button sx={{ color: "#fff" }} onClick={logout}>
               Logout
             </Button>
           </>
         ) : (
-          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-            <Button color="inherit">Login</Button>
+          <Link
+            to="/login"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <Button sx={{ color: "#fff" }}>Login</Button>
           </Link>
         )}
       </Toolbar>

@@ -1,20 +1,23 @@
-// Movies.jsx
 import { useState, useEffect } from "react";
 import {
   Box,
   Container,
   Grid,
   TextField,
-  Button,
   Typography,
   Pagination,
   InputAdornment,
   IconButton,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { backend } from "../../services/apiService";
 import { useUser } from "../../contexts/UserContext";
 import MoviesCard from "./MoviesCard";
+import { useSearchParams } from "react-router-dom";
 
 export default function Movies() {
   const { user } = useUser();
@@ -22,18 +25,20 @@ export default function Movies() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [perPage, setPerPage] = useState(25);
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  async function fetchMovies(pageNumber = 1, query = "") {
+  async function fetchMovies(pageNumber = 1, query = "", limit = 25) {
     try {
       setLoading(true);
-      const data = await backend("http://localhost:3000/movies", {
+      const data = await backend("movies", {
         access_token: user.access_token,
-        params: { page: pageNumber, search: query },
+        params: { page: pageNumber, search: query, limit },
       });
       setMovies(data.results);
       setPage(data.page);
-      setTotalPages(data.total_pages);
+      setTotalPages(Math.min(data.total_pages, 500));
     } catch (err) {
       console.error("Erreur lors de la récupération des films :", err);
     } finally {
@@ -42,22 +47,46 @@ export default function Movies() {
   }
 
   useEffect(() => {
-    fetchMovies();
+    const initialPage = parseInt(searchParams.get("page") || "1", 10);
+    setPage(initialPage);
+    fetchMovies(initialPage, search, perPage);
   }, []);
 
   function handleSearch() {
-    fetchMovies(1, search);
+    setPage(1);
+    setSearchParams({ page: "1" });
+    fetchMovies(1, search, perPage);
   }
 
   function handlePageChange(_event, newPage) {
     setPage(newPage);
-    fetchMovies(newPage, search);
+    setSearchParams({ page: newPage.toString() });
+    fetchMovies(newPage, search, perPage);
+  }
+
+  function handlePerPageChange(e) {
+    const newLimit = parseInt(e.target.value, 10);
+    setPerPage(newLimit);
+    setPage(1);
+    setSearchParams({ page: "1" });
+    fetchMovies(1, search, newLimit);
   }
 
   return (
-    <Box sx={{ minHeight: "100vh", py: 4 }}>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        py: 4,
+        backgroundColor: "#121212",
+        color: "#fff",
+      }}
+    >
       <Container maxWidth="lg">
-        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{ fontWeight: "bold", color: "#FFD700" }}
+        >
           Découvrir des films
         </Typography>
 
@@ -76,11 +105,28 @@ export default function Movies() {
                   </IconButton>
                 </InputAdornment>
               ),
+              style: { color: "white" },
             }}
+            InputLabelProps={{ style: { color: "white" } }}
+            sx={{ flex: 1 }}
           />
-          <Button variant="contained" onClick={handleSearch}>
-            Rechercher
-          </Button>
+
+          <FormControl sx={{ minWidth: 120 }}>
+            <InputLabel id="per-page-label" sx={{ color: "white" }}>
+              Par page
+            </InputLabel>
+            <Select
+              labelId="per-page-label"
+              value={perPage}
+              onChange={handlePerPageChange}
+              label="Par page"
+              sx={{ color: "white" }}
+            >
+              <MenuItem value={25}>25</MenuItem>
+              <MenuItem value={50}>50</MenuItem>
+              <MenuItem value={100}>100</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
 
         {loading && (

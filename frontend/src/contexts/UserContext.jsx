@@ -1,6 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 
+const domain =
+  import.meta.env.VITE_ENVIRONMENT === "production"
+    ? import.meta.env.VITE_BACKEND_URL
+    : "http://localhost:3000/";
+
 export const UserContext = createContext(null);
 
 export function UserProvider({ children }) {
@@ -15,8 +20,6 @@ export function UserProvider({ children }) {
 
   async function register({ username, email, password }) {
     try {
-      const domain =
-        import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
       const res = await axios.post(`${domain}auth/register`, {
         username,
         email,
@@ -40,8 +43,6 @@ export function UserProvider({ children }) {
 
   async function login({ email, password }) {
     try {
-      const domain =
-        import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
       const res = await axios.post(`${domain}auth/login`, {
         email,
         password,

@@ -17,14 +17,15 @@ export class MoviesService {
     page = 1,
     search?: string,
     sort = 'popularity.desc',
+    limit = 25,
   ): Promise<TmdbMoviesResponse> {
     const apiUrl = this.configService.get<string>('API_URL');
 
-    let url = `${apiUrl}3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=${sort}`;
+    let url = `${apiUrl}3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=${sort}&limit=${limit}`;
     if (search && search.trim()) {
       url = `${apiUrl}3/search/movie?query=${encodeURIComponent(
         search,
-      )}&include_adult=false&language=en-US&page=${page}`;
+      )}&include_adult=false&language=en-US&page=${page}&limit=${limit}`;
     }
     const response = await firstValueFrom(
       this.httpService

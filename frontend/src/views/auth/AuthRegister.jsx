@@ -8,6 +8,7 @@ import {
   Typography,
   Button,
   Box,
+  CssBaseline,
 } from "@mui/material";
 import { useUser } from "../../contexts/UserContext";
 
@@ -24,7 +25,7 @@ export default function AuthRegister() {
     e.preventDefault();
     const success = await register(form);
     if (success) {
-      alert("Inscription réussie");
+      alert("Inscription r\u00e9ussie");
       navigate("/login");
     }
   }
@@ -37,18 +38,22 @@ export default function AuthRegister() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "#121212",
       }}
     >
+      <CssBaseline />
       <Card
         sx={{
           width: "100%",
           borderRadius: 2,
-          boxShadow: 3,
+          boxShadow: 5,
           p: 2,
+          backgroundColor: "#1f1f1f",
+          color: "white",
         }}
       >
         <CardContent>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" gutterBottom sx={{ color: "#FFD700" }}>
             Inscription
           </Typography>
           <Box component="form" onSubmit={handleSubmit}>
@@ -59,6 +64,8 @@ export default function AuthRegister() {
               sx={{ mb: 2 }}
               value={form.username}
               onChange={(e) => setForm({ ...form, username: e.target.value })}
+              InputLabelProps={{ style: { color: "#ccc" } }}
+              InputProps={{ style: { color: "white" } }}
             />
 
             <TextField
@@ -69,6 +76,8 @@ export default function AuthRegister() {
               sx={{ mb: 2 }}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
+              InputLabelProps={{ style: { color: "#ccc" } }}
+              InputProps={{ style: { color: "white" } }}
             />
 
             <TextField
@@ -79,13 +88,20 @@ export default function AuthRegister() {
               sx={{ mb: 2 }}
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
+              InputLabelProps={{ style: { color: "#ccc" } }}
+              InputProps={{ style: { color: "white" } }}
             />
 
             <Button
               type="submit"
               variant="contained"
               fullWidth
-              sx={{ py: 1.2, fontWeight: "bold" }}
+              sx={{
+                py: 1.2,
+                fontWeight: "bold",
+                backgroundColor: "#FFD700",
+                color: "black",
+              }}
             >
               S'inscrire
             </Button>

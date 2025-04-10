@@ -6,7 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'https://moviebooker-1.onrender.com',
+    origin: [
+      'https://moviebooker-1.onrender.com',
+      /^http:\/\/localhost:\d+$/, // autorise localhost sur tous les ports
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });

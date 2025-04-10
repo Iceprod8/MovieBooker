@@ -2,12 +2,13 @@ version: "3.8"
 
 services:
   backend:
-    container_name: nest-backend
+    container_name: moviebooker-backend
     build:
       context: ./backend
     ports:
       - "3000:3000"
     env_file:
+      - ./backend/.env.local
       - ./backend/.env
     environment:
       - NODE_ENV=development
@@ -16,8 +17,23 @@ services:
     volumes:
       - ./backend:/app
 
+  frontend:
+    container_name: moviebooker-frontend
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend/.env.local
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+
   postgres:
-    container_name: nest-postgres
+    container_name: moviebooker-postgres
     image: postgres:16
     ports:
       - "5432:5432"

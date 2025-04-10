@@ -8,6 +8,7 @@ import {
   Typography,
   Button,
   Box,
+  CssBaseline,
 } from "@mui/material";
 import { useUser } from "../../contexts/UserContext";
 
@@ -20,7 +21,7 @@ export default function AuthLogin() {
     e.preventDefault();
     const success = await login(form);
     if (success) {
-      alert("Connexion réussie !");
+      alert("Connexion r\u00e9ussie !");
       navigate("/movies");
     } else {
       alert("Erreur de login");
@@ -35,18 +36,22 @@ export default function AuthLogin() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "#121212",
       }}
     >
+      <CssBaseline />
       <Card
         sx={{
           width: "100%",
           borderRadius: 2,
-          boxShadow: 3,
+          boxShadow: 5,
           p: 2,
+          backgroundColor: "#1f1f1f",
+          color: "white",
         }}
       >
         <CardContent>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" gutterBottom sx={{ color: "#FFD700" }}>
             Connexion
           </Typography>
           <Box component="form" onSubmit={handleSubmit}>
@@ -58,6 +63,8 @@ export default function AuthLogin() {
               sx={{ mb: 2 }}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
+              InputLabelProps={{ style: { color: "#ccc" } }}
+              InputProps={{ style: { color: "white" } }}
             />
 
             <TextField
@@ -68,13 +75,20 @@ export default function AuthLogin() {
               sx={{ mb: 2 }}
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
+              InputLabelProps={{ style: { color: "#ccc" } }}
+              InputProps={{ style: { color: "white" } }}
             />
 
             <Button
               type="submit"
               variant="contained"
               fullWidth
-              sx={{ py: 1.2, fontWeight: "bold" }}
+              sx={{
+                py: 1.2,
+                fontWeight: "bold",
+                backgroundColor: "#FFD700",
+                color: "black",
+              }}
             >
               Se connecter
             </Button>

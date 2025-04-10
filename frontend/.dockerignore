@@ -1,0 +1,11 @@
+node_modules
+dist
+.vscode
+.env
+*.log
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+cypress/videos
+cypress/screenshots
