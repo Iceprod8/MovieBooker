@@ -15,7 +15,7 @@ import {
   ApiParam,
 } from '@nestjs/swagger';
 import { MoviesService } from '../service/movies.service';
-import { JwtAuthGuard } from 'src/user/jwt/jwt-auth.guard';
+import { JwtAuthGuard } from '../../user/jwt/jwt-auth.guard';
 import { TmdbMovieDto, TmdbMoviesResponseDto } from '../dto/movies.dto';
 
 @ApiTags('Movies')
@@ -50,7 +50,7 @@ export class MoviesController {
     type: String,
     description: 'Critère de tri',
   })
-  async getMovies(
+  async findAll(
     @Query('page') page?: number,
     @Query('search') search?: string,
     @Query('sort') sort?: string,

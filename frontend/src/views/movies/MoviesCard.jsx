@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 
-export default function MoviesCard({ movie }) {
+export default function MoviesCard({ movie, page }) {
   return (
     <Card
       component={Link}
-      to={`/movies/${movie.id}`}
+      to={`/movies/${movie.id}?returnPage=${page}`}
       sx={{
         maxWidth: 345,
         width: "100%",

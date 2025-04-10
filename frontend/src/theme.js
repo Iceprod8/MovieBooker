@@ -4,14 +4,18 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#ff9100",
+      main: "#673AB7", // Deep Purple
     },
     secondary: {
-      main: "#00b0ff",
+      main: "#03A9F4", // Light Blue
     },
     background: {
       default: "#121212",
       paper: "#1e1e1e",
+    },
+    text: {
+      primary: "#FFFFFF",
+      secondary: "#B0B0B0",
     },
   },
   typography: {

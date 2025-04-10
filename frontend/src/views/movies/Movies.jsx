@@ -1,3 +1,4 @@
+// Movies.jsx
 import { useState, useEffect } from "react";
 import {
   Box,
@@ -59,6 +60,7 @@ export default function Movies() {
         <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
           Découvrir des films
         </Typography>
+
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 3 }}>
           <TextField
             fullWidth
@@ -90,7 +92,7 @@ export default function Movies() {
         <Grid container spacing={3}>
           {movies.map((movie) => (
             <Grid item key={movie.id} xs={12} sm={6} md={4}>
-              <MoviesCard movie={movie} />
+              <MoviesCard movie={movie} page={page} />
             </Grid>
           ))}
         </Grid>

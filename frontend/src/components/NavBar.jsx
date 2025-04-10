@@ -6,12 +6,7 @@ export default function NavBar() {
   const { user, logout } = useUser();
 
   return (
-    <AppBar
-      position="static"
-      sx={{
-        background: "linear-gradient(90deg, #ff9100 0%, #ff3d00 100%)",
-      }}
-    >
+    <AppBar position="static">
       <Toolbar>
         <Typography
           variant="h6"
@@ -27,6 +22,9 @@ export default function NavBar() {
             <Typography variant="body1" sx={{ marginRight: 2 }}>
               Bonjour, {user.username} !
             </Typography>
+            <Button component={Link} to="/reservations" color="inherit">
+              Mes réservations
+            </Button>
             <Button color="inherit" onClick={logout}>
               Logout
             </Button>

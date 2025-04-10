@@ -2,8 +2,12 @@ import axios from "axios";
 
 export async function backend(url, config = {}) {
   try {
-    const { access_token, ...rest } = config;
+    const { method = "GET", data, access_token, ...rest } = config;
+
     const finalConfig = {
+      url,
+      method,
+      data,
       ...rest,
       headers: {
         Accept: "application/json",
@@ -11,7 +15,8 @@ export async function backend(url, config = {}) {
         ...(rest.headers || {}),
       },
     };
-    const response = await axios.get(url, finalConfig);
+
+    const response = await axios(finalConfig);
     return response.data;
   } catch (error) {
     if (error.response && error.response.status === 401) {

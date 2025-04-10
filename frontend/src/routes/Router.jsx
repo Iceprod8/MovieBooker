@@ -7,6 +7,7 @@ import AuthRegister from "../views/auth/AuthRegister";
 import AuthLogin from "../views/auth/AuthLogin";
 import Movies from "../views/movies/Movies";
 import MoviesDetails from "../views/movies/MoviesDetails";
+import Reservation from "../views/profiles/Reservation";
 
 export default function Router() {
   return (
@@ -29,6 +30,14 @@ export default function Router() {
           element={
             <ProtectedRoute>
               <MoviesDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/reservations"
+          element={
+            <ProtectedRoute>
+              <Reservation />
             </ProtectedRoute>
           }
         />

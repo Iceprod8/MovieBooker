@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { User } from './user/entity/user.entity';
 import { MoviesModule } from './movies/movies.module';
+import { Reservation } from './reservation/entity/reservation.entity';
+import { ReservationModule } from './reservation/reservation.module';
 
 @Module({
   imports: [
@@ -20,12 +22,13 @@ import { MoviesModule } from './movies/movies.module';
         username: config.get<string>('DB_USERNAME'),
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB_NAME'),
-        entities: [User],
+        entities: [User, Reservation],
         synchronize: true,
       }),
     }),
     UserModule,
     MoviesModule,
+    ReservationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

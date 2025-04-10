@@ -60,7 +60,6 @@ export class UserService {
       password: hashedPassword,
     });
     await this.usersRepository.save(user);
-
     const payload = { sub: user.id, email: user.email };
     return {
       message: 'Inscription réussie',
